@@ -10,7 +10,7 @@ class MemberCard(models.Model):
     def _compute_bar_code(self):
         rule = self.env['barcode.rule'].search([('name', '=', 'Customer Barcodes')])[0]
         size = 13 - len(rule.pattern)
-        ean = rule.pattern + str(uuid.uuid4().fields[-1])[:size]
+        ean = rule.pattern + str(uuid.uuid1().fields[-1])[:size]
         return ean[0:12] + str(self.env['barcode.nomenclature'].ean_checksum(ean))
 
     _name = 'member.card'
