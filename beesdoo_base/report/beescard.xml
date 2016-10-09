@@ -1,0 +1,13 @@
+<odoo>
+    <report id="report_beescard" string="Beesaard" model="res.partner"
+        report_type="qweb-html" file="beesdoo_base.beescard_template" name="beesdoo_base.beescard_template" />
+
+    <template id="beescard_template">
+        <t t-call="report.html_container">
+            <t t-foreach="docs" t-as="partner">
+                <p t-field="partner.first_name"/><p t-field="partner.last_name" />
+            </t>
+        </t>
+    </template>
+
+</odoo>
