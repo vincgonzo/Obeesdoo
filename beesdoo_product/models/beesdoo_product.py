@@ -28,7 +28,7 @@ class BeesdooProduct(models.Model):
     @api.one
     def generate_barcode(self):
         print 'generate barcode', self.barcode, self.barcode == ''
-        rule = self.env['barcode.rule'].search([('name', '=', 'Beescoop Product Barcode Rule')])[0]
+        rule = self.env['barcode.rule'].search([('name', '=', 'Beescoop Product Barcodes')])[0]
         size = 13 - len(rule.pattern)
         ean = rule.pattern + str(uuid.uuid4().fields[-1])[:size]
         bc = ean[0:12] + str(self.env['barcode.nomenclature'].ean_checksum(ean))

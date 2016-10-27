@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-
 	<record model="ir.ui.view" id="beesdoo_product_form">
 		<field name="name">bees.product.template.form</field>
 		<field name="model">product.template</field>
