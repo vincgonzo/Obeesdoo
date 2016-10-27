@@ -7,6 +7,9 @@
 		<field name="model">product.template</field>
 		<field name="inherit_id" ref="product.product_template_only_form_view" />
 		<field name="arch" type="xml">
+			<field name="barcode" position="after">
+				<button string="Generate Barcode" name="generate_barcode" type="object" attrs="{'invisible' : [('barcode','!=',False)]}" /> />
+			</field>
 			<field name="invoice_policy" position="attributes">
             	<attribute name="invisible">1</attribute>
             </field>
