@@ -1,1 +1,1 @@
-import beesdoo_pos
+import beesdoo_pos, beesdoo_pos_session

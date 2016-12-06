@@ -5,7 +5,7 @@ class BeesPOS(models.Model):
     _inherit = 'pos.config'
 
     bill_value = fields.One2many('bill_value', 'pos')
-
+    
 class BillValue(models.Model):
     _name = 'bill_value'
     _order = 'name asc'
