@@ -21,7 +21,6 @@
         </field>
     </record>
 
-
 	<record id="printing_membercard_request_wizard" model="ir.ui.view">
         <field name="name">Request Membercard Printing Wizard</field>
         <field name="model">membercard.requestprinting.wizard</field>

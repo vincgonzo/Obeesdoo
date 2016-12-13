@@ -15,7 +15,7 @@ class NewMemberCardWizard(models.TransientModel):
     new_comment = fields.Char('Reason', required=True)
     partner_id = fields.Many2one('res.partner', default=_get_default_partner)
     force_barcode = fields.Char('Force Barcode', groups="beesdoo_base.group_force_barcode")
-
+    
     @api.one
     def create_new_card(self):
         client = self.partner_id.sudo()
@@ -31,7 +31,7 @@ class RequestMemberCardPrintingWizard(models.TransientModel):
         return self.env.context['active_ids']
 
     partner_ids = fields.Many2many('res.partner', default=_get_selected_partners)
-
+    
 
     @api.one
     def request_printing(self):

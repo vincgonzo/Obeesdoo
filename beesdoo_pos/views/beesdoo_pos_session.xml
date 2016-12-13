@@ -1,0 +1,20 @@
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="beescoop_pos_session_inherit">
+			<field name="name">bees.pos.session.form.view</field>
+			<field name="model">pos.session</field>
+			<field name="inherit_id" ref="point_of_sale.view_pos_session_form" />
+			<field name="arch" type="xml">
+				<button name="open" position="attributes">
+					<attribute name="confirm">"Please check the opening balance is
+						correct !"</attribute>
+				</button>
+				<button name="cashbox_control" position="attributes">
+					<attribute name="confirm">"Please check the closing balance is
+						correct !"</attribute>
+				</button>
+			</field>
+		</record>
+	</data>
+</openerp>
+
