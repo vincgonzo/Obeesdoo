@@ -49,7 +49,7 @@
     </t>
     
     <t t-extend="ClientListScreenWidget">
-    	<t t-jquery='.button new-customer' t-operation='replace'>
+    	<t t-jquery='.new-customer' t-operation='replace'>
     	</t>
     </t>
 </templates>
