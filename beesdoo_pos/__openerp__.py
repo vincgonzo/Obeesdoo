@@ -26,6 +26,8 @@
     'data': [
         'security/ir.model.access.csv',
         'views/beesdoo_pos.xml',
+        'views/beesdoo_pos_session.xml',
+        'wizard/views/check_balance.xml',
         'data/email.xml'
     ],
     'qweb': ['static/src/xml/templates.xml'],

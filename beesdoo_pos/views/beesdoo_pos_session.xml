@@ -1,0 +1,30 @@
+<openerp>
+
+	<record model="ir.actions.act_window" id="action_open_session_wizard">
+		<field name="name">Open Session</field>
+		<field name="res_model">opening.balance.new.wizard</field>
+		<field name="view_mode">form</field>
+		<field name="target">new</field>
+	</record>
+
+	<data>
+		<record model="ir.ui.view" id="beescoop_pos_session_inherit">
+			<field name="name">bees.pos.session.form.view</field>
+			<field name="model">pos.session</field>
+			<field name="inherit_id" ref="point_of_sale.view_pos_session_form" />
+			<field name="arch" type="xml">
+				<button name="open" position="replace">
+					<group>
+						<button string="Open Session" name="%(action_open_session_wizard)d"
+							type="action" />
+					</group>
+				</button>
+				<button name="cashbox_control" position="attributes">
+					<attribute name="confirm">Please check the closing balance is
+						correct !</attribute>
+				</button>
+			</field>
+		</record>
+	</data>
+</openerp>
+

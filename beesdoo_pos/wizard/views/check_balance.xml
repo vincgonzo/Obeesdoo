@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!-- Open session wizard -->
+	<record id="Open Session" model="ir.ui.view">
+		<field name="name">Open Session Wizard</field>
+		<field name="model">opening.balance.new.wizard</field>
+		<field name="arch" type="xml">
+			<form string="Check Opening Balance">
+				<group>
+					<field name="balance"/>
+				</group>
+				<footer>
+					<button type="object" name="open_session" string="Open Session" class="oe_highlight" />
+					<button special="cancel" string="Cancel" />
+				</footer>
+			</form>
+		</field>
+	</record>
+</odoo>
