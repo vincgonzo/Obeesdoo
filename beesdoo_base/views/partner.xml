@@ -33,13 +33,20 @@
 			<xpath expr="//notebook" position="inside">
 				<page string="Member Card"
 					attrs="{'invisible': ['|', ('customer', '=', False), ('eater', '!=', 'worker_eater')]}">
-					<separator string="Printing" />
 					<group>
-						<field name="member_card_to_be_printed" />
-						<field name="last_printed" />
+						<group>
+							<field name="info_session" />
+							<field name="info_session_date"
+								attrs="{'invisible': ['|', ('info_session', '=', False)]}" />
+						</group>
+						<group>
+							<field name="member_card_to_be_printed" />
+							<field name="last_printed" />
+						</group>
 					</group>
 					<separator string="Eaters" />
-					<field name="child_eater_ids" widget="many2many_tags" options="{'no_create': True}" context="{'default_eater' : 'eater', 'default_customer' : True}"/>
+					<field name="child_eater_ids" widget="many2many_tags"
+						options="{'no_create': True}" context="{'default_eater' : 'eater', 'default_customer' : True}" />
 					<group>
 						<button string="New Eater" name="%(action_eater_wizard)d"
 							type="action" />
@@ -72,22 +79,22 @@
 			<button name="toggle_active" position="attributes">
 				<attribute name="groups" />
 			</button>
-            <!-- Temporary fix for the partner_view -->
-            <xpath expr="//field[@name='customer']" position='before'>
-                   <field name="is_company" invisible="True"/>
-                </xpath>
+			<!-- Temporary fix for the partner_view -->
+			<xpath expr="//field[@name='customer']" position='before'>
+				<field name="is_company" invisible="True" />
+			</xpath>
 		</field>
 	</record>
 
 	<!-- S022 : By default a supplier should be a company -->
 	<record id="base.action_partner_supplier_form" model="ir.actions.act_window">
-		<field name="context">{ 
-				'search_default_supplier': 1,
-				'default_customer':	0,
-				'default_supplier': 1,
-				'default_is_company' : True,
-				'default_company_type' : 'company', 
-		}
+		<field name="context">{
+			'search_default_supplier': 1,
+			'default_customer': 0,
+			'default_supplier': 1,
+			'default_is_company' : True,
+			'default_company_type' : 'company',
+			}
 		</field>
 	</record>
 </odoo>
