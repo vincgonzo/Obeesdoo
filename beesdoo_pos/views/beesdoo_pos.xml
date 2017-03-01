@@ -22,7 +22,7 @@
             <field name="inherit_id" ref="account.view_account_bnk_stmt_cashbox" />
             <field name="arch" type="xml">
                 <field name="coin_value" position="attributes">
-                    <attribute name="readonly">1</attribute>
+                    <attribute name="readonly">False</attribute>
                 </field>
             </field>
         </record>
