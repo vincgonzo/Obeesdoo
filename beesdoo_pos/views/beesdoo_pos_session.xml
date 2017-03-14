@@ -19,6 +19,12 @@
 							type="action" />
 					</group>
 				</button>
+				<button name="close" position="replace">
+					<group>
+						<button string="Close Session" name="%(action_close_session_wizard)d"
+							type="action" />
+					</group>
+				</button>
 				<button name="cashbox_control" position="attributes">
 					<attribute name="confirm">Please check the closing balance is
 						correct !</attribute>
