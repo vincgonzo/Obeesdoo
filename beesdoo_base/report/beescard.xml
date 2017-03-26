@@ -1,59 +1,77 @@
 <odoo>
-    <report id="report_beescard" string="Beesaard" model="res.partner"
-        report_type="qweb-pdf" file="beesdoo_base.beescard_template" name="beesdoo_base.beescard_template" />
+    <report id="report_beescard" string="Beescaard" model="res.partner"
+        report_type="qweb-pdf" file="beesdoo_base.beescard_template"
+        name="beesdoo_base.beescard_template" />
 
     <template id="beescard_template">
         <t t-call="report.html_container">
             <!-- <t t-call="report.external_layout"> -->
-                <div class="page">
+            <div class="page">
                 <t t-foreach="docs" t-as="partner">
-                    <table style="border: 1px solid black;width: 386px;height: 243px;table-layout:fixed">
-                        <tr>
-                            <td>
-                            <img alt="Embedded Image" t-att-src="'data:image/png;base64,' + partner.image" width="100px" height="150px"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                En cas de perte, prévennez-nous via commande@bees-coop.be
-                            </td>
-                        </tr>
-                    </table>
-                    <br />
-                    <table style="border: 1px solid black;width: 386px;height: 243px;table-layout:fixed">
-                        <tr>
-                            <td>
-                              
-                               <img src="/beesdoo_base/static/src/img/logo.png" style="display: block;margin-left: auto;margin-right: auto;margin-top:10px;margin-top:10px" width="190px" height="190px" />
-                                
-                            </td>
-                        </tr>
-                          <tr>
-                            <td><p style="text-align:center;">www.bees-coop.be</p></td>
-                          </tr>
-                    </table>
-                   <!--  <table style="border: 1px solid black;width: 303px;height: 191px">
-                        <tr>
-                            <td>
-                        <img alt="Embedded Image" t-att-src="'data:image/png;base64,' + partner.image" />
-                        <p t-field="partner.first_name"/><p t-field="partner.last_name" />
-                        <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s&amp;humanreadable=%s'%('EAN13', partner.barcode, 300, 200, 1)"/>
-                    </td>
-                        </tr>
-                    </table>
-                    <table>
-                        <tr>
-                            <td>
-                                <img src="/beesdoo_base/static/src/img/logo.png" />
-                                <div>www.bees-coop.be</div>
-                            
-                            </td>
-                        </tr>
-                    
-                    </table> -->
+                                <table
+                                    style="border: 1px solid black;width: 386px;height: 243px;table-layout:fixed">
+                                    <tr>
+                                        <td style="width: 146px"  >
+                                        <p style="padding:15px">
+                                            <img alt="Embedded Image"
+                                                t-att-src="'data:image/png;base64,' + partner.image"
+                                                width="116px" height="150px" />
+                                        </p>
+                                        </td>
+                                        <td style="vertical-align:top">
+                                            <p style="text-align:left"  >
+                                                <t t-raw="partner.first_name" /><br />
+                                                <t t-raw="partner.last_name" />
+                                            </p>
+                                             <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s&amp;humanreadable=%s'%('EAN13', partner.barcode, 200, 80, 1)"/> 
+                                             <br />
+                                             <img
+                                                src="/beesdoo_base/static/src/img/redline.png"
+                                                
+                                                width="200px" height="6px" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <p
+                                                style="text-align:center;font-size:9px">En cas de perte,
+                                                prévennez-nous via
+                                                commande@bees-coop.be
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table
+                                    style="border: 1px solid black;width: 386px;height: 243px;table-layout:fixed">
+                                    <tr>
+                                        <td>
+
+                                            <img
+                                                src="/beesdoo_base/static/src/img/logo.png"
+                                                style="display: block;margin-left: auto;margin-right: auto;margin-top:10px;margin-top:10px"
+                                                width="190px" height="190px" />
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p style="text-align:center;">www.bees-coop.be
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
+
+
+                    <!-- <table style="border: 1px solid black;width: 303px;height: 
+                        191px"> <tr> <td> <img alt="Embedded Image" t-att-src="'data:image/png;base64,' 
+                        + partner.image" /> <p t-field="partner.first_name"/><p t-field="partner.last_name" 
+                        /> <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s&amp;humanreadable=%s'%('EAN13', 
+                        partner.barcode, 300, 200, 1)"/> </td> </tr> </table> <table> <tr> <td> <img 
+                        src="/beesdoo_base/static/src/img/logo.png" /> <div>www.bees-coop.be</div> 
+                        </td> </tr> </table> -->
                 </t>
-                </div>
-          <!--   </t> -->
+            </div>
+            <!-- </t> -->
         </t>
     </template>
 
