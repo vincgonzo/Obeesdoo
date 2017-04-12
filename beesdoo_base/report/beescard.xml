@@ -1,7 +1,8 @@
 <odoo>
     <report id="report_beescard" string="Beescaard" model="res.partner"
-        report_type="qweb-pdf" file="beesdoo_base.beescard_template"
+        report_type="qweb-html" file="beesdoo_base.beescard_template"
         name="beesdoo_base.beescard_template" />
+    <!-- Use paper format a4 low margin -->
 
     <template id="beescard_template">
         <t t-call="report.html_container">
@@ -9,32 +10,36 @@
             <div class="page">
                 <t t-foreach="docs" t-as="partner">
                                 <table
-                                    style="border: 1px solid black;width: 386px;height: 243px;table-layout:fixed">
+                                    style="border: 1px solid black;width: 386px;height: 243px;table-layout:fixed;display: inline-block;">
                                     <tr>
-                                        <td style="width: 146px"  >
-                                        <p style="padding:15px">
+                                        <td style="width: 146px;vertical-align:top"  >
+                                        <div style="padding-top:15px;padding-left:15px">
                                             <img alt="Embedded Image"
                                                 t-att-src="'data:image/png;base64,' + partner.image"
                                                 width="116px" height="150px" />
-                                        </p>
+                                        </div>
                                         </td>
                                         <td style="vertical-align:top">
-                                            <p style="text-align:left"  >
-                                                <t t-raw="partner.first_name" /><br />
-                                                <t t-raw="partner.last_name" />
+                                            <p style="text-align: left;padding-top: 15px;font-size: 14px;font-family:Roboto;"  >
+                                                <span t-raw="partner.first_name[:30]" /><br />
+                                                <span t-raw="partner.last_name[:24]" style="font-weight:bold" />
                                             </p>
-                                             <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s&amp;humanreadable=%s'%('EAN13', partner.barcode, 200, 80, 1)"/> 
-                                             <br />
+                                             <div style="padding-top:22px">
+                                             <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s&amp;humanreadable=%s'%('EAN13', partner.barcode if not partner.parent_eater_id else partner.parent_barcode, 200, 70, 1)"/> 
+                                             </div>
+                                     
+                                             
+                                             <div style="padding-top:5px">
                                              <img
                                                 src="/beesdoo_base/static/src/img/redline.png"
-                                                
                                                 width="200px" height="6px" />
+                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">
+                                        <td colspan="2" style="vertical-align:top">
                                             <p
-                                                style="text-align:center;font-size:9px">En cas de perte,
+                                                style="text-align:center;font-size:12px;font-family:Roboto">En cas de perte,
                                                 prévennez-nous via
                                                 commande@bees-coop.be
                                             </p>
@@ -42,7 +47,7 @@
                                     </tr>
                                 </table>
                                 <table
-                                    style="border: 1px solid black;width: 386px;height: 243px;table-layout:fixed">
+                                    style="border: 1px solid black;width: 386px;height: 243px;table-layout:fixed;display: inline-block;">
                                     <tr>
                                         <td>
 
@@ -55,12 +60,11 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <p style="text-align:center;">www.bees-coop.be
+                                            <p style="text-align:center;font-family:Roboto">www.bees-coop.be
                                             </p>
                                         </td>
                                     </tr>
                                 </table>
-
 
                     <!-- <table style="border: 1px solid black;width: 303px;height: 
                         191px"> <tr> <td> <img alt="Embedded Image" t-att-src="'data:image/png;base64,' 
@@ -69,6 +73,7 @@
                         partner.barcode, 300, 200, 1)"/> </td> </tr> </table> <table> <tr> <td> <img 
                         src="/beesdoo_base/static/src/img/logo.png" /> <div>www.bees-coop.be</div> 
                         </td> </tr> </table> -->
+                        <br />
                 </t>
             </div>
             <!-- </t> -->
