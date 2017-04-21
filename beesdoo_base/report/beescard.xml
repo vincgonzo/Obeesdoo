@@ -1,82 +1,164 @@
 <odoo>
-    <report id="report_beescard" string="Beescaard" model="res.partner"
-        report_type="qweb-html" file="beesdoo_base.beescard_template"
-        name="beesdoo_base.beescard_template" />
+
+    <report id="report_beescard_cm" string="Beescaard" model="res.partner"
+        report_type="qweb-html" file="beesdoo_base.beescard_template_cm"
+        name="beesdoo_base.beescard_template_cm" />
+
     <!-- Use paper format a4 low margin -->
 
-    <template id="beescard_template">
+    <template id="beescard_template_cm">
+        <head>
+            <style type="text/css">
+                /* Roboto Regular */
+                @font-face {
+                font-family: 'Roboto-Regular';
+                font-style: normal;
+                src: local('Roboto Regular'),
+                url('/beesdoo_base/static/font/Roboto-Regular.ttf')
+                format('truetype');
+                }
+                /* Roboto Bold */
+                @font-face {
+                font-family: 'Roboto-Bold';
+                font-style: normal;
+                src: local('Roboto Bold'),
+                url('/beesdoo_base/static/font/Roboto-Bold.ttf')
+                format('truetype');
+                }
+            </style>
+        </head>
+
+        <!-- X1.133 -->
         <t t-call="report.html_container">
-            <!-- <t t-call="report.external_layout"> -->
             <div class="page">
+
+
                 <t t-foreach="docs" t-as="partner">
-                                <table
-                                    style="border: 1px solid black;width: 386px;height: 243px;table-layout:fixed;display: inline-block;">
-                                    <tr>
-                                        <td style="width: 146px;vertical-align:top"  >
-                                        <div style="padding-top:15px;padding-left:15px">
-                                            <img alt="Embedded Image"
-                                                t-att-src="'data:image/png;base64,' + partner.image"
-                                                width="116px" height="150px" />
-                                        </div>
-                                        </td>
-                                        <td style="vertical-align:top">
-                                            <p style="text-align: left;padding-top: 15px;font-size: 14px;font-family:Roboto;"  >
-                                                <span t-raw="partner.first_name[:30]" /><br />
-                                                <span t-raw="partner.last_name[:24]" style="font-weight:bold" />
-                                            </p>
-                                             <div style="padding-top:22px">
-                                             <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s&amp;humanreadable=%s'%('EAN13', partner.barcode if not partner.parent_eater_id else partner.parent_barcode, 200, 70, 1)"/> 
-                                             </div>
-                                     
-                                             
-                                             <div style="padding-top:5px">
-                                             <img
-                                                src="/beesdoo_base/static/src/img/redline.png"
-                                                width="200px" height="6px" />
-                                             </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" style="vertical-align:top">
-                                            <p
-                                                style="text-align:center;font-size:12px;font-family:Roboto">En cas de perte,
-                                                prévennez-nous via
-                                                commande@bees-coop.be
-                                            </p>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <table
-                                    style="border: 1px solid black;width: 386px;height: 243px;table-layout:fixed;display: inline-block;">
-                                    <tr>
-                                        <td>
+                    <table
+                        style="width: 14.02cm;height: 9.39cm;table-layout:fixed;display: inline-block;">
+                        <tr>
+                            <td
+                                style="border-bottom: 1px solid black;width: 0.66cm;height: 0.66cm;"></td>
+                            <td
+                                style="border-left: 1px solid black;border-right: 1px solid black;"
+                                colspan="2"></td>
+                            <td
+                                style="border-bottom: 1px solid black;width: 0.66cm;height: 0.66cm;"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td
+                                style="width: 4.98cm;vertical-align:bottom;height: 6.87cm;">
+                                <div
+                                    style="padding-top:0.2cm;padding-left:0.1cm;padding-bottom:0.2cm;">
+                                    <img alt="Embedded Image"
+                                        t-att-src="'data:image/png;base64,' + partner.image"
+                                        style="width:4.7cm;height:6.4cm" />
+                                </div>
+                            </td>
+                            <td
+                                style="vertical-align:top;width:7.72cm;height: 6.87cm;position: relative;">
+                                <p
+                                    style="text-align: left;padding-top: 0.2cm;font-size: 1.2em;">
+                                    <span t-raw="partner.first_name[:30]"
+                                        style="font-family:Roboto-Regular" />
+                                    <br />
+                                    <span t-raw="partner.last_name[:26]"
+                                        style="font-family:Roboto-Bold;" />
+                                    <br />
+                                </p>
+                                <p
+                                    style="font-size: 0.8em;font-family:Roboto-Regular">
+                                    <t t-if="partner.parent_eater_id">
+                                        <span
+                                            t-raw="'[' + partner.parent_eater_id.first_name[:30] + ' ' + partner.parent_eater_id.last_name[:30] + ']'"
+                                            style="font-family:Roboto-Regular" />
+                                    </t>
+                                </p>
+                                <div style="position: absolute;bottom: 0;">
+                                    <div style="padding-top:0.3cm">
+                                        <img
+                                            t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s&amp;humanreadable=%s'%('EAN13', partner.barcode if not partner.parent_eater_id else partner.parent_barcode, 340, 70, 1)"
+                                            style="width:7.2cm;height:2.52cm" />
+                                    </div>
 
-                                            <img
-                                                src="/beesdoo_base/static/src/img/logo.png"
-                                                style="display: block;margin-left: auto;margin-right: auto;margin-top:10px;margin-top:10px"
-                                                width="190px" height="190px" />
 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p style="text-align:center;font-family:Roboto">www.bees-coop.be
-                                            </p>
-                                        </td>
-                                    </tr>
-                                </table>
+                                    <div
+                                        style="padding-top:0.2cm;padding-bottom:0.2cm;">
+                                        <img
+                                            src="/beesdoo_base/static/src/img/redline.png"
+                                            style="width:7.2cm;height:0.2cm" />
+                                    </div>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan="2"
+                                style="vertical-align:center;height: 1.20cm;">
+                                <p
+                                    style="text-align:center;font-size:0.8em;font-family:Roboto-Regular">En cas de perte,
+                                    prévennez-nous via
+                                    membre@bees-coop.be
+                                </p>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td
+                                style="border-top: 1px solid black;width: 0.66cm;height: 0.66cm;"></td>
+                            <td
+                                style="border-left: 1px solid black;border-right: 1px solid black;"
+                                colspan="2"></td>
+                            <td
+                                style="border-top: 1px solid black;width: 0.66cm;height: 0.66cm;"></td>
+                        </tr>
+                    </table>
 
-                    <!-- <table style="border: 1px solid black;width: 303px;height: 
-                        191px"> <tr> <td> <img alt="Embedded Image" t-att-src="'data:image/png;base64,' 
-                        + partner.image" /> <p t-field="partner.first_name"/><p t-field="partner.last_name" 
-                        /> <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s&amp;humanreadable=%s'%('EAN13', 
-                        partner.barcode, 300, 200, 1)"/> </td> </tr> </table> <table> <tr> <td> <img 
-                        src="/beesdoo_base/static/src/img/logo.png" /> <div>www.bees-coop.be</div> 
-                        </td> </tr> </table> -->
-                        <br />
+                    <table
+                        style="width: 14.02cm;height: 9.39cm;table-layout:fixed;display: inline-block;">
+                        <tr>
+                            <td
+                                style="border-bottom: 1px solid black;width: 0.66cm;height: 0.66cm;"></td>
+                            <td
+                                style="border-left: 1px solid black;border-right: 1px solid black;"
+                                colspan="2"></td>
+                            <td
+                                style="border-bottom: 1px solid black;width: 0.66cm;height: 0.66cm;"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td style="width: 12.7cm;height: 6.87cm;">
+
+                                <img
+                                    src="/beesdoo_base/static/src/img/logo.png"
+                                    style="display: block;margin-left: auto;margin-right: auto;margin-top:0.2cm;margin-bottom:0.2cm;width:6.46cm;height:6.46cm" />
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td style="height: 1.20cm;">
+                                <p
+                                    style="text-align:center;font-family:Roboto-Regular;font-size:1.1em;">www.bees-coop.be
+                                </p>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td
+                                style="border-top: 1px solid black;width: 0.66cm;height: 0.66cm;"></td>
+                            <td
+                                style="border-left: 1px solid black;border-right: 1px solid black;"
+                                colspan="2"></td>
+                            <td
+                                style="border-top: 1px solid black;width: 0.66cm;height: 0.66cm;"></td>
+                        </tr>
+                    </table>
+                    <br />
                 </t>
             </div>
-            <!-- </t> -->
         </t>
     </template>
 
