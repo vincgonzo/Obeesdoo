@@ -60,10 +60,10 @@
                                 style="vertical-align:top;width:7.72cm;height: 6.87cm;position: relative;">
                                 <p
                                     style="text-align: left;padding-top: 0.2cm;font-size: 1.2em;">
-                                    <span t-raw="partner.first_name[:30]"
+                                    <span t-raw="partner.first_name and partner.first_name[:30] or ''"
                                         style="font-family:Roboto-Regular" />
                                     <br />
-                                    <span t-raw="partner.last_name[:26]"
+                                    <span t-raw="partner.last_name and partner.last_name[:26] or ''"
                                         style="font-family:Roboto-Bold;" />
                                     <br />
                                 </p>
@@ -71,7 +71,7 @@
                                     style="font-size: 0.8em;font-family:Roboto-Regular">
                                     <t t-if="partner.parent_eater_id">
                                         <span
-                                            t-raw="'[' + partner.parent_eater_id.first_name[:30] + ' ' + partner.parent_eater_id.last_name[:30] + ']'"
+                                            t-raw="'[' + (partner.parent_eater_id.first_name and partner.parent_eater_id.first_name[:30] or '') + ' ' + (partner.parent_eater_id.last_name and partner.parent_eater_id.last_name[:30] or '') + ']'"
                                             style="font-family:Roboto-Regular" />
                                     </t>
                                 </p>
