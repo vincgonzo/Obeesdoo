@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
-from openerp import models, fields
+from openerp import models, fields, api, _
+from openerp.exceptions import ValidationError
 
 class CooperativeStatus(models.Model):
     _name = 'cooperative.status'
     _rec_name = 'cooperator_id'
 
     cooperator_id = fields.Many2one('res.partner')
+    info_session = fields.Boolean('Information Session ?')
+    info_session_date = fields.Datetime('Information Session Date')
     super = fields.Boolean("Super Cooperative")
     sr = fields.Integer("Compteur shift regulier")
     sc = fields.Integer("Compteur shift de compensation")
@@ -24,14 +27,33 @@ class CooperativeStatus(models.Model):
         ],
         string="Working mode",
     )
-    
+
     def _compute_status(self):
         for rec in self:
             rec.status = 'ok'
- 
+
+    _sql_constraints = [
+        ('cooperator_uniq', 'unique (cooperator_id)', _('You can only set one cooperator status per cooperator')),
+    ]
+
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    super = fields.Boolean(related='cooperative_status_ids.super', string="Super Cooperative", readonly=True)
     cooperative_status_ids = fields.One2many('cooperative.status', 'cooperator_id', readonly=True)
-    working_mode = fields.Selection(related='user_ids.working_mode', readonly=True)
+    super = fields.Boolean(related='cooperative_status_ids.super', string="Super Cooperative", readonly=True, store=True)
+    info_session = fields.Boolean(related='cooperative_status_ids.info_session', string='Information Session ?', readonly=True, store=True)
+    info_session_date = fields.Datetime(related='cooperative_status_ids.info_session_date', string='Information Session Date', readonly=True, store=True)
+    working_mode = fields.Selection(related='cooperative_status_ids.working_mode', readonly=True, store=True)
+
+    @api.multi
+    def coop_subscribe(self):
+        return {
+           'name': _('Subscribe Cooperator'),
+           'type': 'ir.actions.act_window',
+           'view_type': 'form',
+           'view_mode': 'form',
+           'res_model': 'beesdoo.shift.subscribe',
+           'target': 'new',
+        }
+
+    #TODO access right + vue on res.partner

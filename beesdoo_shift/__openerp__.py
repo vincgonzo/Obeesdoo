@@ -29,5 +29,6 @@
         "wizard/instanciate_planning.xml",
         "wizard/batch_template.xml",
         "wizard/assign_super_coop.xml",
+        "wizard/subscribe.xml",
     ],
 }

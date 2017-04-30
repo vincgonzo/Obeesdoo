@@ -4,6 +4,12 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="beesdoo_base.beesdoo_partner_form_view" />
         <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <header>
+                    <button name="coop_subscribe" string="Subscribe to shift" class="oe_highlight"
+                            type="object" groups="beesdoo_shift.group_shift_management"/>
+                </header>
+            </xpath>
             <field name="eater" position="after">
                 <field name="super" />
                 <field name="working_mode" />
@@ -21,6 +27,9 @@
                 </header>
                 <group>
                     <field name="cooperator_id" />
+                    <field name="info_session" />
+                    <field name="info_session_date" />
+                    <field name="working_mode" />
                     <field name="super" />
                     <field name="sr" />
                     <field name="sc" />
@@ -62,7 +71,7 @@
     <menuitem name="Status" id="menu_status_top" parent="menu_root"
         groups="beesdoo_shift.group_shift_management" sequence="20" />
     <menuitem name="Cooperative Status" id="menu_status" parent="menu_status_top"
-        action="action_coop_status" />
+        action="action_coop_status" groups="beesdoo_shift.group_cooperative_admin" />
 </odoo>
 
 
