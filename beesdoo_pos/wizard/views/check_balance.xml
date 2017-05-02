@@ -16,5 +16,22 @@
 			</form>
 		</field>
 	</record>
+	
+	<!-- Open session wizard -->
+	<record id="End of Session" model="ir.ui.view">
+		<field name="name">End of Session Wizard</field>
+		<field name="model">closing.balance.new.wizard</field>
+		<field name="arch" type="xml">
+			<form string="Check Closing Balance">
+				<group>
+					<field name="closing_balance"/>
+				</group>
+				<footer>
+					<button type="object" name="close_session" string="End of Session" class="oe_highlight" />
+					<button special="cancel" string="Cancel" />
+				</footer>
+			</form>
+		</field>
+	</record>
 
 </odoo>
