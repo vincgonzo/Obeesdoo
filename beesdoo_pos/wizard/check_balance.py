@@ -6,7 +6,7 @@ class OpeningBalanceWizard(models.TransientModel):
     _name = 'opening.balance.new.wizard'
     
     def _get_opening_balance(self):
-        return self.env['pos.session'].browse(self._context['active_id']).cash_register_id.balance_start
+        return self.env['pos.session'].browse(self.env.context.get('active_id')).cash_register_id.balance_start
     
     opening_balance = fields.Float('Opening Balance', default=_get_opening_balance, readonly = True)
     
@@ -15,4 +15,4 @@ class OpeningBalanceWizard(models.TransientModel):
         print 'open_session'
         print '#########################'
         
-        return self.env['pos.session'].browse(self._context['active_id']).open_session
+        return self.env['pos.session'].browse(self.env.context.get('active_id')).wkf_action_open()

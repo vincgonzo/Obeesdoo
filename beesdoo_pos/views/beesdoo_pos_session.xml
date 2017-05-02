@@ -16,13 +16,7 @@
 				<button name="open" position="replace">
 					<group>
 						<button string="Open Session" name="%(action_open_session_wizard)d"
-							type="action" />
-					</group>
-				</button>
-				<button name="close" position="replace">
-					<group>
-						<button string="Close Session" name="%(action_close_session_wizard)d"
-							type="action" />
+							type="action" attrs="{'invisible':[('state','=','opening_control')]}"/> />
 					</group>
 				</button>
 				<button name="cashbox_control" position="attributes">
