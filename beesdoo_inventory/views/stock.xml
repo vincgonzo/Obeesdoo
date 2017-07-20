@@ -20,13 +20,36 @@
 			<field name="min_date" position="after">
 				<field name="max_shipping_date" placeholder="Max shipping date" />
 			</field>
-            <field name="backorder_id" position="after">
-                <field name="responsible" />
-            </field>
-            <button name="do_new_transfer" position="before">
-                 <button name="copy_qty" string="Copy Pack Quantity" states="partially_available,assigned" type="object" class="oe_highlight"
-                         attrs="{'invisible': ['|', ('picking_type_code', '!=', 'incoming')]}"/>
-            </button>
+			<field name="backorder_id" position="after">
+				<field name="responsible" />
+			</field>
+			<button name="do_new_transfer" position="before">
+				<button name="copy_qty" string="Copy Pack Quantity" states="partially_available,assigned"
+					type="object" class="oe_highlight"
+					attrs="{'invisible': ['|', ('picking_type_code', '!=', 'incoming')]}" />
+			</button>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="beesdoo_view_inventory_form">
+		<field name="name">beesdoo.view.inventory.form</field>
+		<field name="model">stock.inventory</field>
+		<field name="inherit_id" ref="stock.view_inventory_form" />
+		<field name="arch" type="xml">
+			<field name="date" position="after">
+				<field name="cause" widget="radio" />
+			</field>
+		</field>
+	</record>
+	
+	<record model="ir.ui.view" id="beesdoo_view_inventory_tree">
+		<field name="name">beesdoo.view.inventory.tree</field>
+		<field name="model">stock.inventory</field>
+		<field name="inherit_id" ref="stock.view_inventory_tree" />
+		<field name="arch" type="xml">
+			<field name="name" position="after">
+				<field name="cause"/>
+			</field>
 		</field>
 	</record>
 

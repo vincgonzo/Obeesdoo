@@ -36,3 +36,10 @@ class StockPicking(models.Model):
         for pack_operation in self.pack_operation_product_ids:
             pack_operation.qty_done = pack_operation.product_qty
         return True
+    
+    
+class StockInventory(models.Model):
+    _inherit = 'stock.inventory'
+    
+    cause = fields.Selection(string='Cause of Inventory', required=True, selection=[('real', 'Real Adjustment'), ('correction', 'Reception Error Correction')])
+    
