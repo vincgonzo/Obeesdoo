@@ -66,17 +66,19 @@
                 .pt03 {
                   padding-top:0.3cm
                 }
-                .partnerName {
 
+                .infosContainer p:first-of-type {
+                  margin-bottom: 5px;
                 }
                 .infosContainer p {
-                padding-top: 0.9cm;
-                }
-                .infosContainer p {
+                  padding-top: 0.9cm;
                   font-size: 22px;
                 }
+
                 .infosContainer {
                   margin-left: auto;
+                  display: flex;
+                  flex-direction: column;
                   width:7.72cm;
                   height: 6.87cm;
                   position: relative;
@@ -134,6 +136,9 @@
                   table-layout:fixed;
                   display: inline-block;
                 }
+                .cooperator {
+                  font-size: 15px;
+                }
                 .logoRestrict {
                   width: 12.7cm;
                   height: 6.87cm;
@@ -175,7 +180,7 @@
                                   <strong t-raw="partner.last_name and partner.last_name[:26] or ''" class="robotoB" />
                                   <br />
                               </p>
-                              <p class="robotoR fs08">
+                              <p class="robotoR fs08 cooperator">
                                   <t t-if="partner.parent_eater_id and partner.parent_eater_id.cooperator_type == 'share_a'">
                                       <span t-raw="'[' + (partner.parent_eater_id.first_name and partner.parent_eater_id.first_name[:30] or '') + ' ' + (partner.parent_eater_id.last_name and partner.parent_eater_id.last_name[:30] or '') + ']'" class="robotoR" />
                                   </t>
