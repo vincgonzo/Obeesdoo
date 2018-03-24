@@ -136,9 +136,11 @@
                   table-layout:fixed;
                   display: inline-block;
                 }
-                .cooperator span {
-                  font-size: 15px !important;
+                .cooperatorName {
                   padding-top: 0 !important;
+                }
+                .cooperatorName span {
+                  font-size: 15px !important;
                   text-transform: capitalize;
                 }
                 .logoRestrict {
@@ -182,7 +184,7 @@
                                   <strong t-raw="partner.last_name and partner.last_name[:26] or ''" class="robotoB" />
                                   <br />
                               </p>
-                              <p class="robotoR fs08 cooperator">
+                              <p class="robotoR fs08 cooperatorName">
                                   <t t-if="partner.parent_eater_id and partner.parent_eater_id.cooperator_type == 'share_a'">
                                       <span t-raw="'[' + (partner.parent_eater_id.first_name and partner.parent_eater_id.first_name[:30] or '') + ' ' + (partner.parent_eater_id.last_name and partner.parent_eater_id.last_name[:30] or '') + ']'" class="robotoR" />
                                   </t>
