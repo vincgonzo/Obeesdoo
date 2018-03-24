@@ -43,25 +43,40 @@
                   table-layout:fixed;
                   display: inline-block;
                 }
+                .parentContainer {
+                  display: flex;
+                }
                 .imgContainer {
                   width: 4.98cm;
                   vertical-align:bottom;
                   height: 6.87cm;
+                  display: inline-block;
                 }
                 .canvasImg {
                   padding-top:0.2cm;
                   padding-left:0.1cm;
                   padding-bottom:0.2cm;
+                  display: flex;
                 }
                 .imgRestrict {
                   width:4.7cm;
-                  height:6.4cm
+                  height:6.4cm;
+                  margin: auto;
                 }
                 .pt03 {
                   padding-top:0.3cm
                 }
+                .partnerName {
+
+                }
+                .infosContainer p {
+                padding-top: 0.9cm;
+                }
+                .infosContainer p {
+                  font-size: 22px;
+                }
                 .infosContainer {
-                  vertical-align:top;
+                  margin-left: auto;
                   width:7.72cm;
                   height: 6.87cm;
                   position: relative;
@@ -105,8 +120,13 @@
                   padding-top:0.2cm;
                   padding-bottom:0.2cm;
                 }
+                .beesInfos p {
+                  margin: auto;
+                }
                 .beesInfos {
-                  vertical-align:center;height: 1.20cm;
+                  display: flex;
+                  vertical-align:center;
+                  height: 1.20cm;
                 }
                 #tableInfos {
                   width: 14.02cm;
@@ -140,21 +160,19 @@
                   <div class="mainTable">
                       <div>
                           <div class="bd-bt-black size066cm"></div>
-                          <div class="bd-lft-black bd-rgt-black"></div>
-                          <div class="bd-bt-black size066cm"></div>
                       </div>
-                      <div>
+                      <div class="parentContainer">
                           <div class="imgContainer">
-                              <div style="canvasImg">
-                                  <img alt="Embedded Image" t-att-src="/beesdoo_base/static/src/img/logo-beescoop.svg"
+                              <div class="canvasImg">
+                                  <img alt="Embedded Image" src="/beesdoo_base/static/src/img/logo-beescoop.svg"
                                       class="imgRestrict" />
                               </div>
                           </div>
                           <div class="infosContainer">
-                              <p class="alignText">
+                              <p class="alignText partnerName">
                                   <span t-raw="partner.first_name and partner.first_name[:30] or ''" class="robotoR" />
                                   <br />
-                                  <span t-raw="partner.last_name and partner.last_name[:26] or ''" class="robotoB" />
+                                  <strong t-raw="partner.last_name and partner.last_name[:26] or ''" class="robotoB" />
                                   <br />
                               </p>
                               <p class="robotoR fs08">
