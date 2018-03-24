@@ -137,7 +137,8 @@
                   display: inline-block;
                 }
                 .cooperator span {
-                  font-size: 15px;
+                  font-size: 15px !important;
+                  padding-top: 0 !important;
                   text-transform: capitalize;
                 }
                 .logoRestrict {
