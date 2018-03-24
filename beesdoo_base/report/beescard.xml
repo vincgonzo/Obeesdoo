@@ -136,7 +136,7 @@
                   table-layout:fixed;
                   display: inline-block;
                 }
-                .cooperator {
+                .cooperator span {
                   font-size: 15px;
                   text-transform: capitalize;
                 }
