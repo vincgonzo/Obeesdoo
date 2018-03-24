@@ -209,7 +209,7 @@
                           <div class="bd-bt-black size066cm"></div>
                       </div>
                   </div>
-                    <div id="tableInfos" style="width: 14.02cm;height: 9.39cm;table-layout:fixed;display: inline-block;">
+                    <!--div id="tableInfos" style="width: 14.02cm;height: 9.39cm;table-layout:fixed;display: inline-block;">
                         <div>
                             <div class="bd-bt-black size066cm"></div>
                             <div class="bd-lft-black bd-rgt-black"></div>
@@ -230,7 +230,7 @@
                             <div class="bd-lft-black bd-rgt-black"></div>
                             <div class="bd-bt-black size066cm"></div>
                         </div>
-                    </div>
+                    </div-->
                     <br />
                 </t>
             </div>
